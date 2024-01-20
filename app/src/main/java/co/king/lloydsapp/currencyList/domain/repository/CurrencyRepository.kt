@@ -4,8 +4,6 @@ import co.king.lloydsapp.currencyList.domain.model.Currency
 import kotlinx.coroutines.flow.Flow
 
 interface CurrencyRepository {
+    fun fetchCurrencies(): Flow<List<Currency>>
 
-    fun fetchCurrencies()
-
-    fun observeCurrencies(): Flow<List<Currency>>
 }

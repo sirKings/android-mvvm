@@ -1,5 +1,8 @@
 package co.king.lloydsapp.di
 
+import android.app.Application
+import androidx.room.Room
+import co.king.lloydsapp.currencyList.data.local.CurrencyDatabase
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -30,5 +33,11 @@ object AppModule {
         .client(client)
         .build()
         .create()
+
+    fun provideDatabase(app: Application): CurrencyDatabase =
+        Room.databaseBuilder(
+            app, CurrencyDatabase::class.java,
+            "currency.db"
+        ).build()
 
 }

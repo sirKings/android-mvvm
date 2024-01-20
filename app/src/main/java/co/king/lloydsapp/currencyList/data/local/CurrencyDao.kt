@@ -13,5 +13,5 @@ interface CurrencyDao {
     fun saveCurrencyList(items: List<CurrencyEntity>)
 
     @Query("select * from currency")
-    fun observeCurrencyList(): Flow<List<CurrencyEntity>>
+    fun observeCurrencyList(): List<CurrencyEntity>
 }
