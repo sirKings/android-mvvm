@@ -65,6 +65,8 @@ dependencies {
 
    implementation(libs.daggerhilt)
    kapt(libs.daggercompiler)
+    kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Room
     implementation(libs.androidx.room.ktx)
@@ -90,6 +92,9 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+    // system UI Controller
+    implementation(libs.accompanist.systemuicontroller)
 
 }
 

@@ -7,8 +7,8 @@ import retrofit2.http.GET
 interface CurrencyApi {
 
     @GET("currencies")
-    fun getCurrencyList(): Response<Map<String, String>>
+    suspend fun getCurrencyList(): Response<Map<String, String>>
 
     @GET("latest")
-    fun getExchangeRates(): Response<ExchangeRateResponse>
+    suspend fun getExchangeRates(): Response<ExchangeRateResponse>
 }

@@ -5,6 +5,7 @@ import androidx.room.Room
 import co.king.lloydsapp.currencyList.data.local.CurrencyDatabase
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
@@ -12,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -27,6 +29,8 @@ object AppModule {
         .addInterceptor(interceptor)
         .build()
 
+    @Provides
+    @Singleton
     fun provideApi(): CurrencyApi = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASE_URL)
@@ -34,6 +38,8 @@ object AppModule {
         .build()
         .create()
 
+    @Provides
+    @Singleton
     fun provideDatabase(app: Application): CurrencyDatabase =
         Room.databaseBuilder(
             app, CurrencyDatabase::class.java,

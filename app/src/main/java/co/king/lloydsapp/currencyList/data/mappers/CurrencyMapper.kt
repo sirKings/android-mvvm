@@ -5,6 +5,10 @@ import co.king.lloydsapp.currencyList.domain.model.Currency
 
 
 fun CurrencyEntity.toCurrency(): Currency {
-    return Currency(id, name, symbol, rate)
+    return Currency(name, symbol, rate)
+}
+
+fun Currency.toEntity(): CurrencyEntity{
+    return CurrencyEntity(name= name, symbol=symbol, rate = rate)
 }
 

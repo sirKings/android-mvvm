@@ -8,7 +8,7 @@ import co.king.lloydsapp.currencyList.data.local.entities.CurrencyEntity.Compani
 data class CurrencyEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long? = null,
     val name: String,
     val symbol: String,
     val rate: Double
