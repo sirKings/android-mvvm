@@ -6,14 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import co.king.lloydsapp.currencyList.presentation.CurrencyViewModel
 import co.king.lloydsapp.ui.theme.LloydsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.hilt.navigation.compose.hiltViewModel
+import co.king.lloydsapp.currencyList.presentation.CurrencyListScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -21,31 +17,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LloydsAppTheme {
-                val viewModel = hiltViewModel<CurrencyViewModel>()
-                // A surface container using the 'background' color from the theme
+                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    CurrencyListScreen()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LloydsAppTheme {
-        Greeting("Android")
     }
 }

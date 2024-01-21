@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,16 +19,17 @@ class CurrencyViewModel @Inject constructor
     (private val repository: CurrencyRepository) :
     ViewModel() {
 
-        private val _state = MutableStateFlow(CurrencyListState())
-        val state = _state.asStateFlow()
-        init {
-            fetchCurrencies()
-        }
+    private val _state = MutableStateFlow(CurrencyListState())
+    val state = _state.asStateFlow()
 
-    private fun fetchCurrencies(){
+    init {
+        fetchCurrencies()
+    }
+
+    private fun fetchCurrencies() {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.fetchCurrencies().collect{
-                when(it){
+            repository.fetchCurrencies().collect {
+                when (it) {
                     is Resource.Loading -> {
 
                     }
@@ -35,9 +37,10 @@ class CurrencyViewModel @Inject constructor
                     is Resource.Failure -> {
 
                     }
+
                     is Resource.Success -> {
-                        it.data?.forEach {
-                            Log.e("Curr", Gson().toJson(it))
+                        _state.update { currencyListState ->
+                            currencyListState.copy(items = it.data)
                         }
                     }
                 }
