@@ -2,7 +2,7 @@
 
 This repository contains a detailed sample app that implements MVVM architecture using DaggerHilt, Room, Flow, Coroutines, Retrofit. It fetchs information from a free api https://api.frankfurter.app
 <p align="center">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-login.png" width="250">
+  <img src="https://raw.githubusercontent.com/sirKings/android-mvvm/main/mvvm_screenshot.png" width="250">
 </p>
 <br>
 <br>
