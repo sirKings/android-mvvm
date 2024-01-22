@@ -5,6 +5,7 @@ import co.king.lloydsapp.currencyList.domain.repository.CurrencyRepository
 import co.king.lloydsapp.util.Resource
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 
 
 import org.junit.Assert.assertEquals
@@ -17,34 +18,39 @@ import org.mockito.Mockito.`when`
 class CurrencyViewModelTest {
 
     lateinit var viewModel: CurrencyViewModel
-    lateinit var mockRepository: CurrencyRepository
+    var mockRepository: CurrencyRepository? = null
 
     @Before
     fun setUp() {
         mockRepository = mock(CurrencyRepository::class.java)
     }
 
+    @After
+    fun tearDown(){
+        mockRepository = null
+    }
+
     @Test
     fun `Given successful fetch of currencies, currency list state should be populated`() =
         runBlocking {
             val fakeCurrency = listOf(Currency("Australian Dollars", "AUD", 1.2))
-            `when`(mockRepository.fetchCurrencies()).thenReturn(flowOf(Resource.Success(fakeCurrency)))
+            `when`(mockRepository?.fetchCurrencies()).thenReturn(flowOf(Resource.Success(fakeCurrency)))
 
-            viewModel = CurrencyViewModel(mockRepository)
+            viewModel = CurrencyViewModel(mockRepository!!)
 
-            verify(mockRepository).fetchCurrencies()
+            verify(mockRepository)?.fetchCurrencies()
             assertEquals(fakeCurrency, viewModel.state.value.items)
         }
 
     @Test
-    fun `Given failed fetch of currencies, error message state should conatin error`() =
+    fun `Given failed fetch of currencies, error message state should contain error`() =
         runBlocking {
             val errorMessage = "Error occurred"
-            `when`(mockRepository.fetchCurrencies()).thenReturn(flowOf(Resource.Failure(data = null,errorMessage = errorMessage)))
+            `when`(mockRepository?.fetchCurrencies()).thenReturn(flowOf(Resource.Failure(data = null,errorMessage = errorMessage)))
 
-            viewModel = CurrencyViewModel(mockRepository)
+            viewModel = CurrencyViewModel(mockRepository!!)
 
-            verify(mockRepository).fetchCurrencies()
+            verify(mockRepository)?.fetchCurrencies()
             assertEquals(errorMessage, viewModel.state.value.errorMessage)
         }
 }
