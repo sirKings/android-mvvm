@@ -1,5 +1,6 @@
 package co.king.lloydsapp.currencyList.data.repository
 
+import co.king.lloydsapp.currencyList.data.local.CurrencyDao
 import co.king.lloydsapp.currencyList.data.local.CurrencyDatabase
 import co.king.lloydsapp.currencyList.data.mappers.toCurrency
 import co.king.lloydsapp.currencyList.data.mappers.toEntity
@@ -14,14 +15,14 @@ import javax.inject.Inject
 
 class CurrencyRepositoryImpl @Inject constructor(
     private val api: CurrencyApi,
-    private val database: CurrencyDatabase
+    private val dao: CurrencyDao
 ): CurrencyRepository {
     override fun fetchCurrencies(): Flow<Resource<List<Currency>>> {
         return flow {
             emit(Resource.Loading(isLoading = true))
 
             //fetch from the local first
-            val localList = database.currencyDao.observeCurrencyList()
+            val localList = dao.observeCurrencyList()
             if(localList.isNotEmpty()){
                 emit(Resource.Success(data = localList.map { entity -> entity.toCurrency() }))
             }
@@ -50,7 +51,7 @@ class CurrencyRepositoryImpl @Inject constructor(
                 item
             }
 
-            database.currencyDao.saveCurrencyList(currencies.map { it.toEntity()})
+            dao.saveCurrencyList(currencies.map { it.toEntity()})
 
             emit(Resource.Success(data = currencies))
 

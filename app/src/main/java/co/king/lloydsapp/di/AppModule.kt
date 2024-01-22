@@ -2,6 +2,7 @@ package co.king.lloydsapp.di
 
 import android.app.Application
 import androidx.room.Room
+import co.king.lloydsapp.currencyList.data.local.CurrencyDao
 import co.king.lloydsapp.currencyList.data.local.CurrencyDatabase
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
 import dagger.Module
@@ -46,4 +47,7 @@ object AppModule {
             "currency.db"
         ).build()
 
+    @Provides
+    @Singleton
+    fun provideCurrencyDao(db: CurrencyDatabase): CurrencyDao = db.currencyDao
 }

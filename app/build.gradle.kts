@@ -85,7 +85,11 @@ dependencies {
     // Extended Icons
     implementation(libs.androidx.material.icons.extended)
 
+    // system UI Controller
+    implementation(libs.accompanist.systemuicontroller)
+
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
@@ -93,8 +97,7 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
-    // system UI Controller
-    implementation(libs.accompanist.systemuicontroller)
+
 
 }
 
