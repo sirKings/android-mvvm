@@ -1,11 +1,9 @@
 package co.king.lloydsapp.currencyList.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.king.lloydsapp.currencyList.domain.repository.CurrencyRepository
 import co.king.lloydsapp.util.Resource
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

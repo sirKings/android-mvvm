@@ -1,7 +1,6 @@
 package co.king.lloydsapp.currencyList.data.repository
 
 import co.king.lloydsapp.currencyList.data.local.CurrencyDao
-import co.king.lloydsapp.currencyList.data.local.CurrencyDatabase
 import co.king.lloydsapp.currencyList.data.mappers.toCurrency
 import co.king.lloydsapp.currencyList.data.mappers.toEntity
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
@@ -10,7 +9,6 @@ import co.king.lloydsapp.currencyList.domain.repository.CurrencyRepository
 import co.king.lloydsapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class CurrencyRepositoryImpl @Inject constructor(

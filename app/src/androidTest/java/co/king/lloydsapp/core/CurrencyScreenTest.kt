@@ -8,19 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
-import co.king.lloydsapp.currencyList.data.remote.dto.ExchangeRateResponse
 import co.king.lloydsapp.currencyList.presentation.CurrencyListScreen
 import co.king.lloydsapp.ui.theme.LloydsAppTheme
 import co.king.lloydsapp.util.TestTags
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import kotlinx.coroutines.runBlocking
 
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.`when`
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltAndroidTest

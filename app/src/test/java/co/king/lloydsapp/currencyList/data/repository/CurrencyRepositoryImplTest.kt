@@ -1,7 +1,6 @@
 package co.king.lloydsapp.currencyList.data.repository
 
 
-import android.util.Log
 import co.king.lloydsapp.currencyList.data.local.CurrencyDao
 import co.king.lloydsapp.currencyList.data.local.entities.CurrencyEntity
 import co.king.lloydsapp.currencyList.data.remote.CurrencyApi

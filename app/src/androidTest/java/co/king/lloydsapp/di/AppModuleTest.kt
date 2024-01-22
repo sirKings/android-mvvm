@@ -7,13 +7,9 @@ import co.king.lloydsapp.currencyList.data.remote.CurrencyApi
 import co.king.lloydsapp.currencyList.data.remote.dto.ExchangeRateResponse
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-
-import org.junit.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import retrofit2.Response
