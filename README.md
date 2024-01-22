@@ -25,6 +25,11 @@ You can connect with me here:
 7. Room: https://developer.android.com/topic/libraries/architecture/room.html
 
 ### MVVM Architecture used is described by the diagram below
+<img src="https://raw.githubusercontent.com/sirKings/android-mvvm/main/mvvm.png">
+
+#### Unit Testing and Instrumentation tests were written using junit, mockito and HiltTestRunner
+
+
 
 ### License
 ```
@@ -42,6 +47,3 @@ You can connect with me here:
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-
-### Contributing to Android MVVM Architecture
-Just make pull request. You are in!
