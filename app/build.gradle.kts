@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "co.king.lloydsapp.core.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -64,7 +64,8 @@ dependencies {
     implementation(libs.material3)
 
    implementation(libs.daggerhilt)
-   kapt(libs.daggercompiler)
+    androidTestImplementation(libs.androidx.runner)
+    kapt(libs.daggercompiler)
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
@@ -94,10 +95,15 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.mockito.android)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler.v244)
 
+    testImplementation(libs.hilt.android.testing)
+    kaptTest(libs.hilt.android.compiler.v244)
 
 }
 

@@ -16,12 +16,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import co.king.lloydsapp.R
 import co.king.lloydsapp.currencyList.presentation.components.CurrencyItem
+import co.king.lloydsapp.util.TestTags
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +55,7 @@ fun CurrencyListScreen() {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            LazyColumn(modifier = Modifier.padding(16.dp)) {
+            LazyColumn(modifier = Modifier.padding(16.dp).testTag(TestTags.CURRENCY_LIST_TAG)) {
                 items(state.value.items.size){
                     CurrencyItem(modifier = Modifier, item = state.value.items[it])
                     Divider(modifier = Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 4.dp))
