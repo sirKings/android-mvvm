@@ -31,16 +31,20 @@ class CurrencyViewModel @Inject constructor
             repository.fetchCurrencies().collect {
                 when (it) {
                     is Resource.Loading -> {
-
+                        _state.update {currencyListState ->
+                            currencyListState.copy(loading = true)
+                        }
                     }
 
                     is Resource.Failure -> {
-
+                        _state.update { currencyListState ->
+                            currencyListState.copy(errorMessage = it.errorMessage, loading = false)
+                        }
                     }
 
                     is Resource.Success -> {
                         _state.update { currencyListState ->
-                            currencyListState.copy(items = it.data)
+                            currencyListState.copy(items = it.data, loading = false)
                         }
                     }
                 }
